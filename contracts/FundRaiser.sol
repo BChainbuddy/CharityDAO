@@ -29,6 +29,7 @@ contract FundRaiser is Ownable {
         }
         s_charityFund -= _amount;
         allowedCharities[_address].charityBalance += _amount;
+        payable(_address).transfer(_amount);
         emit fundsSentToCharity(_address, _amount);
     }
 
