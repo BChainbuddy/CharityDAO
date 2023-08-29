@@ -6,7 +6,9 @@ This project helps the charities get the funding with little to no intermediate 
 - yarn hardhat deploy
 
 <h2>How to test if DAO is working correctly</h2>
-- yarn hardhat node // to start the hardhat blockchain
-- yarn hardhat run scripts/newpropose.js // makes a proposal to add a charity to DAO fund
-- yarn hardhat run scripts/vote.js // executes a vote
-- yarn hardhat run scripts/queue-and-execute.js // queues and executes the proposal
+<ol>
+<li>- yarn hardhat node // to start the hardhat blockchain</li>
+<li>- yarn hardhat run scripts/newpropose.js // makes a proposal to add a charity to DAO fund</li>
+<li>- yarn hardhat run scripts/vote.js // executes a vote</li>
+<li>- yarn hardhat run scripts/queue-and-execute.js // queues and executes the proposal</li>
+</ol>
