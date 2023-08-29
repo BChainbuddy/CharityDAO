@@ -1,4 +1,4 @@
-CHARITY FUNDING DAO
+<h1>CHARITY FUNDING DAO<h1>
 
 This project helps the charities get the funding with little to no intermediate cost. The DAO can choose which charities can join the fund and can decide how much money they can take from it. The fund gets the money from minting the token contract(function sendFunds). The token is though worthless and is there just for voting power.
 
