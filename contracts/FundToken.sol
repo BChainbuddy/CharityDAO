@@ -31,7 +31,19 @@ contract FundToken is ERC20Votes {
     }
 
     function sendFunds() public payable {
-        fundraiser.addToCharityFund{value: msg.value};
+        fundraiser.addToCharityFund{value: msg.value}();
         _mint(msg.sender, msg.value);
+    }
+
+    function getFundRaiserAddress() public view returns (FundRaiser) {
+        return fundraiser;
+    }
+
+    fallback() external payable {
+        sendFunds();
+    }
+
+    receive() external payable {
+        sendFunds();
     }
 }

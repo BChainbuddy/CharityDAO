@@ -7,8 +7,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract FundRaiser is Ownable {
     error charityNameToLong();
     error addressNotAllowed();
+    error balanceInsufficient();
 
-    uint256 public s_charityFund; //uint256 because the charity fund can become very big
+    // uint256 public s_charityFund; //uint256 because the charity fund can become very big
 
     event fundsSentToCharity(address indexed _address, uint256 _amount);
     event charityFunded(address indexed _address, uint256 _amount);
@@ -27,7 +28,10 @@ contract FundRaiser is Ownable {
         if (!allowedCharities[_address].exists) {
             revert addressNotAllowed();
         }
-        s_charityFund -= _amount;
+        if (charityFundBalance() < _amount) {
+            revert balanceInsufficient();
+        }
+        // s_charityFund -= _amount;
         allowedCharities[_address].charityBalance += _amount;
         payable(_address).transfer(_amount);
         emit fundsSentToCharity(_address, _amount);
@@ -45,13 +49,13 @@ contract FundRaiser is Ownable {
 
     //ADD TO A CHARITY FUND, DONT GET THE GOVERNANCE TOKENS IF NOT CALLED FROM A FUNDTOKEN
     function addToCharityFund() public payable {
-        s_charityFund += msg.value;
+        // s_charityFund += msg.value;
         emit charityFunded(msg.sender, msg.value);
     }
 
     //SEE THE CHARITY FUND
-    function checkCharityFundValue() public view returns (uint256) {
-        return s_charityFund;
+    function charityFundBalance() public view returns (uint256) {
+        return address(this).balance;
     }
 
     //SEE THE CHARITY NAME

@@ -1,9 +1,9 @@
-require("@nomiclabs/hardhat-waffle")
-require("hardhat-gas-reporter")
-require("@nomiclabs/hardhat-etherscan")
-require("dotenv").config()
-require("solidity-coverage")
+require("@nomicfoundation/hardhat-chai-matchers")
 require("hardhat-deploy")
+require("solidity-coverage")
+require("hardhat-gas-reporter")
+require("dotenv").config()
+// require("@nomicfoundation/hardhat-chai-matchers")
 
 const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || ""
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
