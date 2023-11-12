@@ -37,7 +37,7 @@ contract FundRaiser is Ownable {
         emit fundsSentToCharity(_address, _amount);
     }
 
-    //FUNCTION TO ALLOW NE CHARITY, OWNABLE BY DAO
+    //FUNCTION TO ALLOW NEW CHARITY, OWNABLE BY DAO
     function allowNewCharity(string memory _charityName, address _address) public onlyOwner {
         if (bytes(_charityName).length > 24) {
             revert charityNameToLong();
